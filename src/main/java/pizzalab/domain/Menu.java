@@ -1,7 +1,8 @@
-package domain;
+package pizzalab.domain;
 
 import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
 import lombok.ToString;
 
 import java.util.Date;
@@ -19,6 +20,7 @@ public class Menu {
 
   @Builder
   @ToString
+  @Getter
   public static final class MenuItem implements Comparable {
 
     private String description;

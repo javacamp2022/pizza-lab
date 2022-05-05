@@ -1,4 +1,4 @@
-package domain;
+package pizzalab.domain;
 
 import lombok.Builder;
 import lombok.Getter;

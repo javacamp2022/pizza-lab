@@ -1,4 +1,4 @@
-package domain;
+package pizzalab.domain;
 
 public enum PizzaType {
   QUATTRO_STAGIONI,

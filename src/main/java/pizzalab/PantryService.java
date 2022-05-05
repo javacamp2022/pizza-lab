@@ -1,4 +1,6 @@
-import domain.Menu;
+package pizzalab;
+
+import pizzalab.domain.Menu;
 
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
