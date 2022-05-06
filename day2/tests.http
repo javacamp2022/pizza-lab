@@ -1,0 +1,22 @@
+POST http://127.0.0.1:8080/customers
+Content-Type: application/json
+
+{
+  "name": "Alice",
+  "phone": "071234567",
+  "hashedPassword": "PRIVATE",
+  "addresses": [
+    {
+      "street": "string"
+    }
+  ]
+}
+
+### GET customers
+GET http://127.0.0.1:8080/customers
+
+### GET customers by name
+GET http://127.0.0.1:8080/customers/John
+
+### GET customers by not existing name
+GET http://127.0.0.1:8080/customers/Beta

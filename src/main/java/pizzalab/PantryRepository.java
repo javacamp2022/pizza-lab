@@ -1,9 +1,11 @@
+package pizzalab;
+
 import lombok.Getter;
 
-import domain.Pizza;
-import domain.PizzaType;
-import domain.Product;
-import domain.Soda;
+import pizzalab.domain.Pizza;
+import pizzalab.domain.PizzaType;
+import pizzalab.domain.Product;
+import pizzalab.domain.Soda;
 
 import java.util.ArrayList;
 import java.util.List;
