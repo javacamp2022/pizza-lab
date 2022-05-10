@@ -12,12 +12,13 @@ import org.springframework.web.bind.annotation.RestController;
 import pizzalab.domain.Address;
 import pizzalab.domain.Customer;
 import pizzalab.domain.Menu;
+import pizzalab.rest.controller.CustomerController;
 
 @SpringBootApplication
 public class Main implements CommandLineRunner {
 
   @Autowired
-  private DeliveryService deliveryService;
+  private CustomerController customerController;
   @Autowired
   public PantryService pantryService;
 
@@ -31,15 +32,8 @@ public class Main implements CommandLineRunner {
   public void run(String... args) throws Exception {
     System.out.println("Welcome to Pizza Delivery Service");
 
-    Customer john = Customer.builder()
-      .name("John")
-      .phone("012345678")
-      .addresses(asList(Address.builder().street("John's street").build()))
-      .build();
-    deliveryService.addCustomer(john);
-
-    Menu menu = pantryService.listMenu();
-    System.out.println(menu);
+    System.out.println(pantryService.listMenu());
+    System.out.println(customerController.getCustomers());
   }
 }
 

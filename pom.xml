@@ -53,6 +53,12 @@
             <version>2.6.4</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+            <version>8.5.10</version>
+        </dependency>
+
         <!-- Model Mapper dependency -->
         <dependency>
             <groupId>org.modelmapper</groupId>
