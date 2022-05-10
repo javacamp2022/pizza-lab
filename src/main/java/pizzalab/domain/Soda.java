@@ -2,10 +2,17 @@ package pizzalab.domain;
 
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
 
 @Getter
 @Setter
+@Entity
+@DiscriminatorValue("2")
+@NoArgsConstructor
 public class Soda extends Product {
 
   private String name;
@@ -17,8 +24,4 @@ public class Soda extends Product {
     this.name = name;
   }
 
-  @Override
-  public String getDescription() {
-    return String.format("Soda %s", name);
-  }
 }
