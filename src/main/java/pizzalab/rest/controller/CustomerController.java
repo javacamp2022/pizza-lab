@@ -43,8 +43,8 @@ public class CustomerController {
   }
 
   @GetMapping("customers/{customerId}")
-  public Customer getCustomer(@PathVariable String customerId) {
-    return deliveryService.findById(customerId);
+  public CustomerOutputDTO getCustomer(@PathVariable String customerId) {
+    return modelMapper.map(deliveryService.findById(customerId), CustomerOutputDTO.class);
   }
 
 }
