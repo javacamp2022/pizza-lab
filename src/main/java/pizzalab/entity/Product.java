@@ -1,4 +1,4 @@
-package pizzalab.domain;
+package pizzalab.entity;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,7 +26,7 @@ public abstract class Product {
   private Long id;
 
   protected int quantity = 0;
-  protected long price = -1;
+  protected double price = -1;
   protected String description;
 
 }

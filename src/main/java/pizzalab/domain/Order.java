@@ -1,6 +1,9 @@
 package pizzalab.domain;
 
 import lombok.Data;
+import pizzalab.entity.Address;
+import pizzalab.entity.Customer;
+import pizzalab.entity.Product;
 
 import java.util.Date;
 import java.util.List;

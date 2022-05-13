@@ -1,9 +1,11 @@
-package pizzalab.domain;
+package pizzalab.entity;
 
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import pizzalab.domain.PizzaType;
+import pizzalab.entity.Product;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
@@ -11,17 +13,17 @@ import javax.persistence.Entity;
 @Getter
 @Setter
 @Entity
-@DiscriminatorValue("2")
 @NoArgsConstructor
-public class Soda extends Product {
+@DiscriminatorValue("1")
+public class Pizza extends Product {
 
-  private String name;
+  private PizzaType type;
 
   @Builder
-  public Soda(int quantity, long price, String name) {
+  public Pizza(int quantity, double price, PizzaType type) {
     this.quantity = quantity;
     this.price = price;
-    this.name = name;
+    this.type = type;
   }
 
 }

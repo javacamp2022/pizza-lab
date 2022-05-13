@@ -1,4 +1,4 @@
-package pizzalab.rest.exception;
+package pizzalab.exception;
 
 public class CustomerNotFoundException extends RuntimeException {
 

@@ -2,9 +2,7 @@ package pizzalab.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import pizzalab.domain.Customer;
-
-import java.util.List;
+import pizzalab.entity.Customer;
 
 public interface CustomerRepository extends JpaRepository<Customer, Long> {
 

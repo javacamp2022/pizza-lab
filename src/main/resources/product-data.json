@@ -1,20 +1,20 @@
 [
   {
-    "_class": "pizzalab.domain.Pizza",
+    "_class": "pizzalab.entity.Pizza",
     "type": 1,
     "price": 10,
     "quantity": 25,
     "description": "Papa Joe's Quattro Stagioni"
   },
   {
-    "_class": "pizzalab.domain.Pizza",
+    "_class": "pizzalab.entity.Pizza",
     "type": 1,
     "price": 12,
     "quantity": 10,
     "description": "Papa Joe's Capriciosa"
   },
   {
-    "_class": "pizzalab.domain.Soda",
+    "_class": "pizzalab.entity.Soda",
     "price": 2,
     "quantity": 50,
     "name": "Coca Cola",

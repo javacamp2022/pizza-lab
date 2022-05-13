@@ -1,11 +1,11 @@
-package pizzalab.domain;
+package pizzalab.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -15,28 +15,25 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
 @Builder
-@ToString
 @Data
-@NoArgsConstructor
 @Entity
+@NoArgsConstructor
 @AllArgsConstructor
-public class MenuItem implements Comparable {
+public class Menu {
 
   @Id
   private Long id;
 
-  private String description;
-  private Long price;
-
   @ManyToMany
   @JoinTable(
     name = "menu_to_menu_items",
-    joinColumns = @JoinColumn(name = "menu_id"),
-    inverseJoinColumns = @JoinColumn(name = "menu_item_id"))
-  private List<Menu> menus;
+    joinColumns = @JoinColumn(name = "menu_item_id"),
+    inverseJoinColumns = @JoinColumn(name = "menu_id"))
+  private List<MenuItem> items;
+  private Date createdAt;
+  private Date validUntil;
+  private Date lastUpdatedAt;
 
-  @Override
-  public int compareTo(Object o) {
-    return description.compareTo(((MenuItem) o).description);
-  }
+
 }
+

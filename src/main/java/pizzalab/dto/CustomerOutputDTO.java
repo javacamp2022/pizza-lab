@@ -1,4 +1,4 @@
-package pizzalab.rest.dto;
+package pizzalab.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
