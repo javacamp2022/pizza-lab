@@ -1,5 +1,7 @@
 package pizzalab.services.exchange;
 
+import lombok.AllArgsConstructor;
+
 import kong.unirest.HttpResponse;
 import kong.unirest.Unirest;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -9,10 +11,13 @@ import pizzalab.domain.exchange.ExchangeResponse;
 
 @Service
 @Qualifier("api")
+@AllArgsConstructor
 public class ApiExchangeService implements ExchangeService {
 
+    private ExchangeConnectorProperties properties;
+
     public ExchangeResponse exchangeRonToEuro(Double amount) {
-        HttpResponse<ExchangeApiResponse> response = Unirest.get("https://romanian-exchange-rate-bnr-api.herokuapp.com/api/latest")
+        HttpResponse<ExchangeApiResponse> response = Unirest.get(properties.getHostUrl() + "/api/latest")
                 .queryString("access_key", "f7dbe1842278-43779b")
                 .asObject(ExchangeApiResponse.class);
 

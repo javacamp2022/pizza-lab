@@ -10,6 +10,7 @@ import pizzalab.exception.CustomerNotFoundException;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CustomerService {
@@ -23,21 +24,26 @@ public class CustomerService {
   }
 
   @Transactional(rollbackFor = SQLException.class)
-  public void addCustomer(Customer customer) {
-    customerRepository.save(customer);
-    productRepository.insertProduct(1, 10, 20, 39, "Product 1");
+  public Customer addCustomer(Customer customer) {
+    if (customerRepository.findFirstByName(customer.getName()) != null) {
+      return null;
+    }
+
+    Customer saved = customerRepository.save(customer);
+    return saved;
+//    productRepository.insertProduct(1, 10, 20, 39, "Product 1");
   }
 
   public List<Customer> findAll() {
     return customerRepository.findAll();
   }
 
-  public Customer findById(String customerName) {
+  public Customer findById(Long customerId) {
 
-    Customer customer = customerRepository.findFirstByName(customerName);
-    if (customer == null) {
+    Optional<Customer> customerOptional = customerRepository.findById(customerId);
+    if (!customerOptional.isPresent()) {
       throw new CustomerNotFoundException("Customer not found");
     }
-    return customer;
+    return customerOptional.get();
   }
 }

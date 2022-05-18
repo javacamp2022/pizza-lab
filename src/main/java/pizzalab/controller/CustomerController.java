@@ -3,6 +3,7 @@ package pizzalab.controller;
 import lombok.extern.slf4j.Slf4j;
 
 import org.modelmapper.ModelMapper;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import pizzalab.services.CustomerService;
@@ -25,23 +26,24 @@ public class CustomerController {
   }
 
   @GetMapping("customers")
-  public List<CustomerOutputDTO> getCustomers() {
+  public ResponseEntity<?> getCustomers() {
     List<Customer> customersWithPrivateStuff = customerService.findAll();
     List<CustomerOutputDTO> customersDto = customersWithPrivateStuff.stream()
         .map(customer -> modelMapper.map(customer, CustomerOutputDTO.class))
         .collect(Collectors.toList());
-    return customersDto;
+    return ResponseEntity.ok(customersDto);
   }
 
   @PostMapping("customers")
-  public void createCustomer(@RequestBody Customer customer) {
+  public ResponseEntity<?> createCustomer(@RequestBody Customer customer) {
     // TODO validation
-    customerService.addCustomer(customer);
+    Customer added = customerService.addCustomer(customer);
+    return added != null ? ResponseEntity.ok(added) : ResponseEntity.badRequest().body("Customer already exists!");
   }
 
   @GetMapping("customers/{customerId}")
-  public CustomerOutputDTO getCustomer(@PathVariable String customerId) {
-    return modelMapper.map(customerService.findById(customerId), CustomerOutputDTO.class);
+  public ResponseEntity<?> getCustomer(@PathVariable Long customerId) {
+    return ResponseEntity.ok(modelMapper.map(customerService.findById(customerId), CustomerOutputDTO.class));
   }
 
 }
