@@ -3,12 +3,23 @@ version: '3.1'
 
 services:
 
+  pizzalab:
+    image: pizza-lab:v2
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+    depends_on:
+      - db
+    ports:
+      - "8080:8080"
+
   db:
     image: postgres
     container_name: pizzalab-postgres
     restart: always
     ports:
       - "8432:5432"
+    expose:
+      - 5432
     environment:
       POSTGRES_USER: user
       POSTGRES_PASSWORD: example
